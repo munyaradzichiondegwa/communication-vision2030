@@ -1,0 +1,17 @@
+anomaly_rules:
+  credential_stuffing:
+    type: frequency
+    events: AUTH_FAILURE
+    threshold: 5/1m
+    per: ip
+  
+  data_exfiltration:
+    type: volume
+    events: DATA_EXPORT
+    threshold: 5MB/10m
+    per: user
+  
+  session_hijacking:
+    type: sequence
+    pattern: [PASSWORD_CHANGE, GEO_LOCATION_CHANGE]
+    timeframe: 5m
